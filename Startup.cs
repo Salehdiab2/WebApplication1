@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
+using WebApplication1.Services;
 
 namespace WebApplication1
 {
@@ -35,7 +36,7 @@ namespace WebApplication1
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication1", Version = "v1" });
             });
             services.AddDbContext<ArrayContext>(x => x.UseSqlServer(Configuration.GetConnectionString("ConStr")));
-
+            services.AddScoped<IArray, Arrays>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
